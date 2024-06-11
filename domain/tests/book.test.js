@@ -5,7 +5,7 @@ describe('Book', () => {
   let myBook;
 
   beforeEach(() => {
-    myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350);
+    myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 350, 70000);
   });
 
   it('return the correct title', () => {
@@ -40,7 +40,7 @@ describe('Book', () => {
     expect(() => myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 0)).toThrow();
   });
   it('toString()', () => {
-    expect(myBook.toString()).toBe('Cuentos de la Selva - Horacio Quiroga - 350 páginas');
+    expect(myBook.toString()).toBe('Título: Cuentos de la Selva Autor: Horacio Quiroga Páginas: 350 Palabras: 70000');
   });
 
 });

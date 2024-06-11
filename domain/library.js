@@ -1,11 +1,8 @@
 import Book from './book.js';
 
 class Library {
-
   #name;
   #inventory = [];
-  #totalWords;
-  #wordCount;
 
   constructor(name) {
     this.setName(name);
@@ -13,11 +10,11 @@ class Library {
 
   setName(name) {
     if (typeof (name) !== "string") {
-      throw new Error()
+      throw new Error('El nombre de la biblioteca debe ser una cadena');
     }
     name = name.trim();
     if (name.length === 0) {
-      throw new Error()
+      throw new Error('El nombre de la biblioteca no puede estar vacío');
     }
     this.#name = name;
   }
@@ -26,8 +23,8 @@ class Library {
     return this.#name;
   }
 
-  addBook(title, author, pages) {
-    const newBook = new Book(title, author, pages);
+  addBook(title, author, pages, words) {
+    const newBook = new Book(title, author, pages, words);
     this.#inventory.push(newBook);
   }
 
@@ -40,12 +37,7 @@ class Library {
   }
 
   totalWords() {
-    this.#totalWords = 0;
-    for (let i = 0; i < this.#inventory.length; i++) {
-      this.#wordCount = this.#inventory[i].getWords();
-      this.#totalWords += this.#wordCount;
-    }
-    return this.#totalWords;
+    return this.#inventory.reduce((total, book) => total + book.getWords(), 0);
   }
 }
 

@@ -3,8 +3,8 @@ class Book {
   #author;
   #pages;
   #words;
-  
-  constructor(title, author, pages, words) {
+
+  constructor(title, author, pages, words = 0) {
     this.setTitle(title);
     this.setAuthor(author);
     this.setPages(pages);
@@ -28,7 +28,7 @@ class Book {
   }
 
   setTitle(title) {
-    if (typeof (title) !== 'string') {
+    if (typeof title !== 'string') {
       throw new Error('El título debe ser una cadena');
     }
     title = title.trim();
@@ -39,7 +39,7 @@ class Book {
   }
 
   setAuthor(author) {
-    if (typeof (author) !== 'string') {
+    if (typeof author !== 'string') {
       throw new Error('El autor debe ser una cadena');
     }
     author = author.trim();
@@ -50,7 +50,7 @@ class Book {
   }
 
   setPages(pages) {
-    if (typeof (pages) !== 'number' || isNaN(pages)) {
+    if (typeof pages !== 'number' || isNaN(pages)) {
       throw new Error('Las páginas deben ser un número válido');
     }
     if (pages < 1) {
@@ -61,11 +61,11 @@ class Book {
   }
 
   setWords(words) {
-    if (typeof (words) !== 'number' || isNaN(words)) {
+    if (typeof words !== 'number' || isNaN(words)) {
       throw new Error('Las palabras deben ser un número válido');
     }
-    if (words < 1) {
-      throw new Error();
+    if (words < 0) { 
+      throw new Error('El número de palabras no puede ser negativo');
     }
     words = Math.trunc(words);
     this.#words = words;
