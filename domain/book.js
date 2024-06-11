@@ -44,7 +44,7 @@ class Book {
     }
     author = author.trim();
     if (author.length === 0) {
-      author = "Anónimo";
+      author = 'Anónimo';
     }
     this.#author = author;
   }

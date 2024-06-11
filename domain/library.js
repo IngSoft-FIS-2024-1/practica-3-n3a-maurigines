@@ -9,7 +9,7 @@ class Library {
   }
 
   setName(name) {
-    if (typeof (name) !== "string") {
+    if (typeof (name) !== 'string') {
       throw new Error('El nombre de la biblioteca debe ser una cadena');
     }
     name = name.trim();
