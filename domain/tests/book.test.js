@@ -29,18 +29,18 @@ describe('Book', () => {
   });
 
   it('check author is a string', () => {
-    // TODO
+    expect(() => myBook = new Book('Cuentos de la Selva', 1, 350)).toThrow();
   });
 
   it('check page param is a number', () => {
-    // TODO
+    expect(() => myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', '350')).toThrow();
   });
 
   it('check pages not < 1', () => {
-    // TODO
+    expect(() => myBook = new Book('Cuentos de la Selva', 'Horacio Quiroga', 0)).toThrow();
   });
   it('toString()', () => {
-    // TODO
+    expect(myBook.toString()).toBe('Cuentos de la Selva - Horacio Quiroga - 350 páginas');
   });
 
 });

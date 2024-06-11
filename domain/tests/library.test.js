@@ -31,7 +31,7 @@ describe('Library', () => {
     expect(() => myLibrary.setName(123)).toThrow();
   });
   it('throw an error when setting an empty name', () => {
-    // TODO
+    expect(() => myLibrary.setName('')).toThrow();
   });
 
 });

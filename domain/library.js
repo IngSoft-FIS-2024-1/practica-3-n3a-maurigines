@@ -40,7 +40,12 @@ class Library {
   }
 
   totalWords() {
-    // TODO
+    this.#totalWords = 0;
+    for (let i = 0; i < this.#inventory.length; i++) {
+      this.#wordCount = this.#inventory[i].getWords();
+      this.#totalWords += this.#wordCount;
+    }
+    return this.#totalWords;
   }
 }
 

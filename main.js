@@ -6,6 +6,7 @@ const btnAdd = document.getElementById('btn-add');
 const inpTitle = document.getElementById('inp-title');
 const inpAuthor = document.getElementById('inp-author');
 const inpPages = document.getElementById('inp-pages');
+const inpWords = document.getElementById('inp-words');
 
 const myLibrary = new Library('Papiros');
 libraryName.innerHTML = myLibrary.getName();
@@ -33,7 +34,16 @@ btnAdd.addEventListener('click', () => {
   const bookErrorContainer = document.getElementById('add-book-error');
   const bookError = document.getElementById('add-book-error-msg');
   try {
-    myLibrary.addBook(inpTitle.value, inpAuthor.value, parseInt(inpPages.value));
+    const title = inpTitle.value;
+    const author = inpAuthor.value;
+    const pages = parseInt(inpPages.value);
+    const words = parseInt(inpWords.value);
+          
+    if (isNaN(pages) || isNaN(words)) {
+      throw new Error('Páginas y palabras deben ser números válidos');
+    }
+    
+    myLibrary.addBook(title, author, pages, words);
     clearInputs();
     bookErrorContainer.classList.add('d-none');
     updateInventory();
@@ -41,14 +51,16 @@ btnAdd.addEventListener('click', () => {
   }
   catch (error) {
     bookErrorContainer.classList.remove('d-none');
-    bookError.innerText = error;
+    bookError.innerText = error.message;
   }
 });
+
 
 function clearInputs() {
   inpTitle.value = '';
   inpAuthor.value = '';
   inpPages.value = '';
+  inpWords.value = '';
 }
 
 updateTotalBooks();
